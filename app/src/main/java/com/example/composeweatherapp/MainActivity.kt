@@ -11,7 +11,6 @@ import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -23,11 +22,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
 import com.example.composeweatherapp.ui.theme.ComposeWeatherAppTheme
 import kotlinx.coroutines.delay
-import kotlin.random.Random
 
 
 class MainActivity : ComponentActivity() {
@@ -37,6 +33,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             ComposeWeatherAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    //Lightning animation
                     var frameCounter by remember { mutableIntStateOf(0) }
                     val lightning = remember { Lightning() }
                     LaunchedEffect(Unit) {
@@ -47,6 +44,7 @@ class MainActivity : ComponentActivity() {
                         }
                     }
 
+                    //Generate particles and indefinite rain animation
                     val particles = remember { generateRainParticles().toMutableStateList() }
 
                     val infiniteTransition = rememberInfiniteTransition()
@@ -58,6 +56,8 @@ class MainActivity : ComponentActivity() {
                             repeatMode = RepeatMode.Restart
                         )
                     )
+
+
                     val cloudPuffs = scaledCloudPuffs(3f)
 
                     val center = Offset.Zero
@@ -76,7 +76,7 @@ class MainActivity : ComponentActivity() {
 //                            size = size
 //                        )
 
-                        val canvasCenter = Offset(size.width / 2f, size.height / 2f)
+                        val canvasCenter = Offset(width / 2f, height / 2f)
                         val cloudCenter = canvasCenter + center
                         lightning.triggerLightning(center = cloudCenter)
 
