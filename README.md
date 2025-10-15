@@ -1,8 +1,8 @@
 # Weather Animation Library
 
-![App Flow](art/app_flow.gif)
+Weather Animation Library entirely in Jetpack Compose — without using any drawables, Lottie files, or third-party libraries. Everything is pure Compose Canvas with gradients, particle systems, and custom drawing logic.
 
-A **Jetpack Compose-based weather animation library** for Android that provides realistic visual effects for clouds, rain, and lightning.
+<img src="art/app_flow.gif" width="280" />
 
 ## 📖 Overview
 This library contains three main components that can be composed together to create **dynamic weather visualizations**:
